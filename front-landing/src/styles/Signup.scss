@@ -7,11 +7,55 @@ $blue: #228be6;
   border: 1px solid black;
   padding: 1rem;
 }
+.Signup{
+  border: 1px solid black;
+  padding: 3rem;
+  margin: 0 auto;
+  width: 512px;
+  text-align: center;
+}
+.signpwd{
+  margin-right:15px;
+}
+.pwdcheck{
+  margin-right:52px;
+}
+.username{
+  margin-right:35px;
+}
+.code{
+  margin-left:90px;
+}
+.getcode{
+  margin-top: 4rem;
+  margin-left: 1rem;
+  padding: 7px 50px;
+  color: azure;
+  background: crimson;
+  border: 1px solid white;
+}
+.codecheck{
+  margin-left:10px;
+
+}
+.signbutton{
+  margin-left: 3rem;
+  margin-top: 2rem;
+  padding: 7px 65px;
+  color: azure;
+  background: crimson;
+  border: 1px solid white;
+}
 .Login{
+  border: 1px solid black;
+  padding: 3rem;
+  margin: 0 auto;
+  width: 412px;
 
   text-align: center;
 }
 .logintop{
+  text-align: center;
   color: crimson;
   margin-bottom: 10rem;
 }
@@ -19,17 +63,44 @@ $blue: #228be6;
   margin-top: 10px;
   margin-right: 3.3rem;
 }
+.loginbutton{
+  border: 1px solid white;
+  color: azure;
+  background: crimson;
+  margin-left: 15px;
+  margin-top: 40px;
+  padding: 5px 65px;
+}
 .input{
+  margin-top: 4rem;
   text-align: center;
 }
 .list{
+  margin-top: 4rem;
   text-align: center;
 }
 .select{
+  margin-top: 4rem;
   text-align: center;
 }
 .phonebook{
-
+  margin: 0 auto;
+  width: 512px;
+  border: 1px solid black;
   text-align: center;
   margin-top: 10rem;
+}
+.addbutton{
+  padding: 1px 15px;
+  margin-left: 5px;
+  border: 1px solid white;
+  color: azure;
+  background: crimson;
+}
+.delete{
+  padding: 1px 15px;
+  margin-left: 5px;
+  border: 1px solid white;
+  color: azure;
+  background: crimson;
 }

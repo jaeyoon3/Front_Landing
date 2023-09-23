@@ -43,14 +43,12 @@ const PhoneBookApp: React.FC<PhoneBookAppProps> = () => {
     });
 
     useEffect(() => {
-        console.log('Before useEffect');
         if (data) {
             console.log('Data:', data);  // Check the data object
             setPhoneBookList([...data.getPeople]);  // Assuming getPeople directly returns the
         } else {
             console.log('Error fetching data:');
         }
-        console.log('After useEffect');
     }, [loading, data]);
     const [createOrUpdatePerson] = useMutation(CREATE_OR_UPDATE_PERSON, {
         context: {
@@ -69,7 +67,7 @@ const PhoneBookApp: React.FC<PhoneBookAppProps> = () => {
     });
 
     const handleAddPhoneBook = async () => {
-        console.log('Data:', data);
+
         if (inputName && inputPhone) {
             const newPhoneBook: PhoneBook = {
                 name: inputName,
@@ -118,54 +116,55 @@ const PhoneBookApp: React.FC<PhoneBookAppProps> = () => {
 
 
     return (
-        <div className="phonebook">
-            <h1>전화번호부</h1>
+        <>
+            <header className="logintop"><h2>DeamHome</h2></header>
+            <div className="phonebook">
+                <h1>전화번호부</h1>
 
-            <div className="input">
-                <input
-                    type="text"
-                    placeholder="이름"
-                    value={inputName}
-                    onChange={handleNameChange}
-                />
-                <input
-                    type="text"
-                    placeholder="전화번호"
-                    value={inputPhone}
-                    onChange={handlePhoneChange}
-                />
-                {/* eslint-disable-next-line react/button-has-type */}
-                <button onClick={handleAddPhoneBook}>추가</button>
+                <div className="input">
+                    <input
+                        type="text"
+                        placeholder="이름"
+                        value={inputName}
+                        onChange={handleNameChange}/>
+                    <input
+                        type="text"
+                        placeholder="전화번호"
+                        value={inputPhone}
+                        onChange={handlePhoneChange}
+                    />
+                    {/* eslint-disable-next-line react/button-has-type */}
+                    <button className="addbutton" onClick={handleAddPhoneBook}>추가</button>
+                </div>
+                <div className="list">
+                    <h2>전화번호부 목록</h2>
+                    <input
+                        type="text"
+                        placeholder="검색"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}/>
+                    <ul>
+                        {phoneBookList.map((phoneBook, index) => (
+                            // eslint-disable-next-line react/no-array-index-key,jsx-a11y/click-events-have-key-events
+                            <li key={index} onClick={() => handleSelectPhoneBook(phoneBook)}>
+                                {phoneBook.name} - {phoneBook.phone}
+                                {/* eslint-disable-next-line react/button-has-type */}
+                                <button className="delete" onClick={() => handleDeletePhoneBook(index)}>삭제</button>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                <div className="select">
+                    <h2>선택된 전화번호</h2>
+                    {selectedPhoneBook && (
+                        <div>
+                            <p>{selectedPhoneBook.name}</p>
+                            <p>{selectedPhoneBook.phone}</p>
+                        </div>
+                    )}
+                </div>
             </div>
-            <div className="list">
-                <h2>전화번호부 목록</h2>
-                <input
-                    type="text"
-                    placeholder="검색"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                />
-                <ul>
-                    {phoneBookList.map((phoneBook, index) => (
-                        // eslint-disable-next-line react/no-array-index-key,jsx-a11y/click-events-have-key-events
-                        <li key={index} onClick={() => handleSelectPhoneBook(phoneBook)}>
-                            {phoneBook.name} - {phoneBook.phone}
-                            {/* eslint-disable-next-line react/button-has-type */}
-                            <button onClick={() => handleDeletePhoneBook(index)}>삭제</button>
-                        </li>
-                    ))}
-                </ul>
-            </div>
-            <div className="select">
-                <h2>선택된 전화번호</h2>
-                {selectedPhoneBook && (
-                    <div>
-                        <p>{selectedPhoneBook.name}</p>
-                        <p>{selectedPhoneBook.phone}</p>
-                    </div>
-                )}
-            </div>
-        </div>
+        </>
     );
 };
 

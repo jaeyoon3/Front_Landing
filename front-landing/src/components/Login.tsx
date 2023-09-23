@@ -46,6 +46,7 @@ const App: React.FC = () => {
             ) : (
                 <>
                     <header className="logintop"><h2>DeamHome</h2></header>
+
                     <div className="Login">
 
                         <h1>로그인</h1>
@@ -73,7 +74,8 @@ const App: React.FC = () => {
                                     onChange={handleChange}
                                     style={{marginBottom: '10px', marginLeft: '5px'}}/>
                             </div>
-                            <button type="submit">Login</button>
+                            <button className="loginbutton"
+                            type="submit">Login</button>
                         </form>
 
                     </div>

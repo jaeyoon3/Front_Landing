@@ -81,100 +81,100 @@ const SignupForm: React.FC = () => {
     };
 
     return (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <form onSubmit={handleSubmit}>
-                <div className="id">
-                    {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                    <label>
-                        아이디:
-                        <input
-                            type="text"
-                            name="id"
-                            value={formData.id}
-                            onChange={handleChange}
-                            style={{ marginBottom: '10px', marginLeft:'5px'}}
-                            required
-                        />
-                    </label>
-                </div>
-                <div>
-                    {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                    <label>
-                        비밀번호:
-                        <input
-                            type="password"
-                            name="pwd"
-                            value={formData.pwd}
-                            onChange={handleChange}
-                            style={{ marginBottom: '10px', marginLeft:'5px'}}
-                            required
-                        />
-                    </label>
-                </div>
-                <div>
-                    {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                    <label>
-                        비밀번호 확인:
-                        <input
-                            type="password"
-                            name="pwdConfirm"
-                            value={formData.pwdConfirm}
-                            onChange={handleChange}
-                            style={{ marginBottom: '10px', marginLeft:'5px'}}
-                            required
-                        />
-                    </label>
-                </div>
-                <div>
-                    {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                    <label>
-                        사용자 이름:
-                        <input
-                            type="text"
-                            name="userName"
-                            value={formData.userName}
-                            onChange={handleChange}
-                            style={{ marginBottom: '10px', marginLeft:'5px'}}
-                            required
-                        />
-                    </label>
-                </div>
-                <div>
-                    {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                    <label>
-                        이메일:
-                        <input
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            style={{ marginBottom: '10px', marginLeft:'5px'}}
-                            required
-                        />
-                    </label>
-                </div>
-                {!verificationSent && (
-                    <button type="button" onClick={handleSendVerificationCode}>인증 코드 받기</button>
-                )}
-                {verificationSent && (
+        <>
+            <header className="logintop"><h2>DeamHome</h2></header>
+            <div className="Signup" style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                <form onSubmit={handleSubmit}>
+
+                    <h3>회원가입</h3>
+                    <div className="signid">
+                        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+                        <label>
+                            아이디:
+                            <input
+                                type="text"
+                                name="id"
+                                value={formData.id}
+                                onChange={handleChange}
+                                style={{marginBottom: '10px', marginLeft: '5px'}}
+                                required/>
+                        </label>
+                    </div>
+                    <div className="signpwd">
+                        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+                        <label>
+                            비밀번호:
+                            <input
+                                type="password"
+                                name="pwd"
+                                value={formData.pwd}
+                                onChange={handleChange}
+                                style={{marginBottom: '10px', marginLeft: '5px'}}
+                                required/>
+                        </label>
+                    </div>
+                    <div className="pwdcheck">
+                        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+                        <label>
+                            비밀번호 확인:
+                            <input
+                                type="password"
+                                name="pwdConfirm"
+                                value={formData.pwdConfirm}
+                                onChange={handleChange}
+                                style={{marginBottom: '10px', marginLeft: '5px'}}
+                                required/>
+                        </label>
+                    </div>
+                    <div className="username">
+                        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+                        <label>
+                            사용자 이름:
+                            <input
+                                type="text"
+                                name="userName"
+                                value={formData.userName}
+                                onChange={handleChange}
+                                style={{marginBottom: '10px', marginLeft: '5px'}}
+                                required/>
+                        </label>
+                    </div>
                     <div>
                         {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                         <label>
-                            인증 코드:
+                            이메일:
                             <input
-                                type="text"
-                                value={verificationCode}
-                                onChange={handleVerificationCodeChange}
-                                style={{ marginBottom: '10px', marginLeft:'5px'}}
-                                required
-                            />
+                                type="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                style={{marginBottom: '10px', marginLeft: '5px'}}
+                                required/>
                         </label>
-                        <button type="button" onClick={handleVerifyCode}>인증 코드 확인</button>
                     </div>
-                )}
-                <button type="submit">회원가입</button>
-            </form>
-        </div>
+                    {!verificationSent && (
+                        <button type="button" className="getcode" onClick={handleSendVerificationCode}>인증 코드 받기</button>
+                    )}
+                    {verificationSent && (
+                        <div className="code">
+                            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+                            <label>
+                                인증 코드:
+                                <input
+                                    type="text"
+                                    value={verificationCode}
+                                    onChange={handleVerificationCodeChange}
+                                    style={{marginBottom: '10px', marginLeft: '5px'}}
+                                    required/>
+                            </label>
+                            <button type="button" className="codecheck" onClick={handleVerifyCode}>인증 코드 확인</button>
+                        </div>
+                    )}
+
+                    <button type="submit" className="signbutton">회원가입</button>
+                </form>
+            </div>
+        </>
     );
 };
 
