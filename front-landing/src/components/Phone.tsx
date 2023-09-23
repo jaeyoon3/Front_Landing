@@ -12,7 +12,6 @@ interface PhoneBook {
 }
 
 interface PhoneBookAppProps {
-    // eslint-disable-next-line react/require-default-props
     accessToken?: string;
 }
 
@@ -33,24 +32,21 @@ const PhoneBookApp: React.FC<PhoneBookAppProps> = () => {
         setInputPhone(e.target.value);
     };
 
-    const request = { name: "박", phone: "010-3333-3333" };
+    const request = { name: '', phone: '' };
 
     const { loading, data} = useQuery(GET_PEOPLE, {
         context: {
             headers: {
                 authorization: accessToken,
             },
-        },
-        variables: {
-            request
-        },
-
+        }
     });
 
     useEffect(() => {
         console.log('Before useEffect');
         if (data) {
-            console.log('Data:', data);
+            console.log('Data:', data);  // Check the data object
+            setPhoneBookList([...data.getPeople]);  // Assuming getPeople directly returns the
         } else {
             console.log('Error fetching data:');
         }
